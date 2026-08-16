@@ -2,171 +2,375 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
 <title>DLS 26 League Manager</title>
 
 <style>
+
+/* =========================================================
+   MOBILE-FIRST DLS 26
+========================================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    background: #070b16;
 }
 
 body {
-    background: #0b1020;
+    background:
+        linear-gradient(180deg, #0b1224 0%, #070b16 100%);
     color: #fff;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
+/* =========================================================
+   APP HEADER
+========================================================= */
+
 header {
-    background: linear-gradient(135deg, #101a3a, #17265a);
-    padding: 20px;
+    background:
+        linear-gradient(145deg, #101d40, #0c142b);
+    padding: 20px 16px 18px;
     text-align: center;
-    border-bottom: 2px solid #26376d;
+    border-bottom: 1px solid #24355f;
 }
 
 header h1 {
-    font-size: 28px;
+    font-size: 22px;
+    font-weight: 800;
     margin-bottom: 6px;
 }
 
 header p {
-    color: #aeb9dc;
-    font-size: 14px;
+    color: #91a1c7;
+    font-size: 11px;
+    line-height: 1.5;
 }
+
+header p:last-child {
+    color: #60a5fa;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+/* =========================================================
+   APP CONTAINER
+========================================================= */
 
 .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 520px;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
 }
 
-/* ADMIN BUTTON */
+/* =========================================================
+   ADMIN BUTTON
+========================================================= */
 
 .admin-bar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .admin-btn {
-    background: #1e293b;
+    width: 100%;
+    height: 46px;
+    background: #151f35;
     color: #fff;
-    border: 1px solid #475569;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
+    border: 1px solid #304266;
+    border-radius: 12px;
+    font-size: 13px;
     font-weight: bold;
 }
 
-.admin-btn:hover {
-    background: #334155;
+.admin-btn:active {
+    transform: scale(.98);
 }
 
-/* LEAGUE TABS */
+/* =========================================================
+   LEAGUE SELECTOR
+========================================================= */
 
 .tabs {
     display: flex;
-    gap: 10px;
+    gap: 7px;
     overflow-x: auto;
-    margin-bottom: 20px;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
 }
 
 .tab {
-    background: #151d36;
-    color: #b8c2df;
-    border: 1px solid #293558;
-    padding: 11px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    white-space: nowrap;
+    flex: 0 0 auto;
+    background: #111a30;
+    color: #8e9bbb;
+    border: 1px solid #263657;
+    border-radius: 10px;
+    padding: 10px 14px;
+    min-height: 42px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tab small {
+    font-size: 9px;
+    opacity: .7;
 }
 
 .tab.active {
     background: #2563eb;
-    color: white;
-    border-color: #2563eb;
+    border-color: #3b82f6;
+    color: #fff;
 }
 
-/* PANELS */
-
-.panel {
-    background: #121a30;
-    border: 1px solid #253252;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.panel h2 {
-    margin-bottom: 16px;
-    font-size: 20px;
-}
-
-/* DASHBOARD */
+/* =========================================================
+   DASHBOARD STAT CARDS
+========================================================= */
 
 .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .stat {
-    background: #151e35;
-    border: 1px solid #293758;
-    padding: 15px;
-    border-radius: 10px;
+    background:
+        linear-gradient(145deg, #141e35, #10182b);
+    border: 1px solid #253657;
+    border-radius: 13px;
+    min-height: 82px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .stat strong {
     display: block;
-    font-size: 23px;
     color: #60a5fa;
+    font-size: 21px;
+    font-weight: 800;
     margin-bottom: 5px;
+
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .stat span {
-    color: #8995b5;
-    font-size: 12px;
+    color: #7f8dab;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
 }
 
-/* FORMS */
+/* =========================================================
+   MOBILE PANELS
+========================================================= */
+
+.panel {
+    background:
+        linear-gradient(145deg, #111a2d, #0d1526);
+    border: 1px solid #223354;
+    border-radius: 14px;
+    padding: 13px;
+    margin-bottom: 10px;
+}
+
+.panel h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+/* =========================================================
+   STANDINGS
+========================================================= */
+
+.standings-mobile {
+    width: 100%;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 9px;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+}
+
+th {
+    background: #1a2744;
+    color: #91a3c8;
+    font-size: 9px;
+    padding: 9px 5px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    padding: 10px 5px;
+    border-bottom: 1px solid #202f4d;
+    text-align: center;
+    font-size: 11px;
+}
+
+td:nth-child(2) {
+    text-align: left;
+    font-weight: bold;
+    min-width: 120px;
+}
+
+td:nth-child(2) small {
+    display: block;
+    color: #687897 !important;
+    font-size: 8px !important;
+    font-weight: normal;
+    margin-top: 2px;
+}
+
+tr:hover {
+    background: #151f35;
+}
+
+.position {
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+.champion {
+    color: #facc15;
+}
+
+.champion td:nth-child(2) {
+    color: #facc15;
+}
+
+/* =========================================================
+   MOBILE RESULT CARDS
+========================================================= */
+
+.match {
+    background: #0b1324;
+    border: 1px solid #1e3154;
+    border-left: 3px solid #2563eb;
+    border-radius: 11px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.match-top {
+    display: flex;
+    justify-content: space-between;
+    color: #7182a4;
+    font-size: 9px;
+    margin-bottom: 10px;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.score .score-number {
+    color: #60a5fa;
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.score .team {
+    width: 38%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 8px;
 }
 
 input,
 select {
     width: 100%;
-    padding: 12px;
-    background: #0b1020;
-    border: 1px solid #344266;
-    color: white;
-    border-radius: 8px;
+    height: 46px;
+    padding: 0 12px;
+
+    background: #080e1c;
+    color: #fff;
+
+    border: 1px solid #2b3d60;
+    border-radius: 10px;
+
     outline: none;
+    font-size: 13px;
+}
+
+input::placeholder {
+    color: #667492;
 }
 
 input:focus,
 select:focus {
     border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,.12);
 }
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 button {
     border: none;
-    border-radius: 8px;
-    padding: 11px 16px;
+    border-radius: 10px;
+    min-height: 44px;
+    padding: 10px 14px;
     cursor: pointer;
+    font-size: 12px;
     font-weight: bold;
 }
 
-button:hover {
-    opacity: .85;
+button:active {
+    transform: scale(.98);
 }
 
 .primary {
@@ -191,79 +395,17 @@ button:hover {
 
 .button-row {
     display: flex;
-    gap: 10px;
-    margin-top: 14px;
-    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-/* TABLE */
-
-.table-wrapper {
-    overflow-x: auto;
+.button-row button {
+    flex: 1;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 750px;
-}
-
-th {
-    background: #1d2947;
-    color: #aebce0;
-    font-size: 12px;
-    padding: 12px 8px;
-}
-
-td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #263452;
-    text-align: center;
-}
-
-td:nth-child(2) {
-    text-align: left;
-    font-weight: bold;
-}
-
-tr:hover {
-    background: #17223c;
-}
-
-.position {
-    font-weight: bold;
-    color: #60a5fa;
-}
-
-.champion {
-    color: #facc15;
-}
-
-/* RESULTS */
-
-.match {
-    background: #0d1428;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border-left: 4px solid #2563eb;
-}
-
-.match-top {
-    display: flex;
-    justify-content: space-between;
-    color: #8fa0c8;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.score {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* ADMIN AREA */
+/* =========================================================
+   ADMIN AREA
+========================================================= */
 
 #adminArea {
     display: none;
@@ -271,84 +413,126 @@ tr:hover {
 
 .admin-heading {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
     gap: 10px;
+    margin-bottom: 14px;
+}
+
+.admin-heading h2 {
+    margin-bottom: 4px;
 }
 
 .admin-status {
     color: #4ade80;
-    font-size: 13px;
+    font-size: 10px;
 }
 
+#adminArea > .panel {
+    background: #0d1526;
+}
+
+#adminArea .panel .panel {
+    background: #101a2e;
+    border-color: #243656;
+    margin-bottom: 9px;
+}
+
+/* =========================================================
+   TEAM CARDS
+========================================================= */
+
 .league-card {
-    background: #0d1428;
-    border: 1px solid #293758;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 10px;
+
+    background: #0a1221;
+    border: 1px solid #243656;
+    border-radius: 10px;
+
+    padding: 11px;
+    margin-bottom: 7px;
 }
 
 .league-card h3 {
     color: #60a5fa;
+    font-size: 13px;
+    margin-bottom: 3px;
 }
 
 .league-card small {
-    color: #9ca8c7;
+    color: #7887a5;
+    font-size: 10px;
 }
+
+.league-card button {
+    min-width: 70px;
+    min-height: 38px;
+    padding: 8px;
+    font-size: 10px;
+}
+
+/* =========================================================
+   EMPTY STATES
+========================================================= */
 
 .empty {
     text-align: center;
-    color: #7784a5;
-    padding: 30px;
+    color: #687896;
+    padding: 25px 10px;
+    font-size: 12px;
 }
 
-.hidden {
-    display: none !important;
-}
-
-/* PASSWORD MODAL */
+/* =========================================================
+   PASSWORD MODAL
+========================================================= */
 
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, .75);
+
+    background: rgba(2,5,12,.88);
+
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+
+    padding: 15px;
     z-index: 9999;
 }
 
 .modal-box {
     width: 100%;
     max-width: 380px;
-    background: #121a30;
-    border: 1px solid #33456e;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+
+    background:
+        linear-gradient(145deg, #121d34, #0c1426);
+
+    border: 1px solid #304568;
+    border-radius: 16px;
+
+    padding: 20px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.7);
 }
 
 .modal-box h2 {
-    margin-bottom: 8px;
+    font-size: 19px;
+    margin-bottom: 7px;
 }
 
 .modal-box p {
-    color: #8d9abc;
-    font-size: 13px;
-    margin-bottom: 18px;
+    color: #8492af;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 15px;
 }
 
 .password-error {
     color: #f87171;
-    font-size: 13px;
-    margin-top: 10px;
+    font-size: 11px;
+    margin-top: 8px;
     display: none;
 }
 
@@ -357,324 +541,14 @@ tr:hover {
     color: white;
 }
 
-@media (max-width: 700px) {
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    header h1 {
-        font-size: 23px;
-    }
-
-    .container {
-        padding: 12px;
-    }
-
-    .admin-heading {
-        align-items: flex-start;
-        flex-direction: column;
-    }
 /* =========================================================
-   MOBILE-FIRST PHONE DESIGN
+   SMALL PHONES
 ========================================================= */
 
-html {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    width: 100%;
-    min-width: 0;
-    overflow-x: hidden;
-    background:
-        radial-gradient(circle at top, #172554 0%, #0b1020 45%);
-}
-
-/* HEADER */
-
-header {
-    padding: 18px 14px 16px;
-    position: relative;
-}
-
-header h1 {
-    font-size: 22px;
-    line-height: 1.25;
-}
-
-header p {
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-/* MAIN CONTAINER */
-
-.container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-/* ADMIN BUTTON */
-
-.admin-bar {
-    margin-bottom: 10px;
-}
-
-.admin-btn {
-    width: 100%;
-    min-height: 46px;
-    font-size: 14px;
-    border-radius: 12px;
-}
-
-/* LEAGUE TABS */
-
-.tabs {
-    width: 100%;
-    gap: 7px;
-    padding-bottom: 4px;
-    margin-bottom: 12px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    scrollbar-width: none;
-
-    -webkit-overflow-scrolling: touch;
-}
-
-.tabs::-webkit-scrollbar {
-    display: none;
-}
-
-.tab {
-    flex: 0 0 auto;
-    min-height: 42px;
-    padding: 10px 14px;
-    font-size: 13px;
-    border-radius: 10px;
-}
-
-/* PANELS */
-
-.panel {
-    padding: 14px;
-    margin-bottom: 12px;
-    border-radius: 13px;
-}
-
-.panel h2 {
-    font-size: 17px;
-    margin-bottom: 13px;
-}
-
-/* STATS */
-
-.stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.stat {
-    min-height: 76px;
-    padding: 12px 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 12px;
-}
-
-.stat strong {
-    font-size: 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-}
-
-.stat span {
-    font-size: 11px;
-}
-
-/* TABLE */
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 8px;
-    -webkit-overflow-scrolling: touch;
-}
-
-table {
-    min-width: 650px;
-    font-size: 12px;
-}
-
-th {
-    padding: 9px 6px;
-    font-size: 10px;
-    position: sticky;
-    top: 0;
-}
-
-td {
-    padding: 10px 6px;
-}
-
-td:nth-child(2) {
-    min-width: 125px;
-}
-
-/* MAKE TEAM NAME STAND OUT */
-
-td:nth-child(2) small {
-    font-size: 9px !important;
-}
-
-/* RESULTS */
-
-.match {
-    padding: 13px 10px;
-    margin-bottom: 8px;
-    border-radius: 11px;
-}
-
-.match-top {
-    font-size: 10px;
-    margin-bottom: 9px;
-}
-
-.score {
-    font-size: 15px;
-    line-height: 1.6;
-    word-break: break-word;
-}
-
-/* FORMS */
-
-.form-grid {
-    grid-template-columns: 1fr;
-    gap: 9px;
-}
-
-input,
-select {
-    min-height: 46px;
-    font-size: 14px;
-    border-radius: 10px;
-}
-
-button {
-    min-height: 44px;
-    font-size: 13px;
-    touch-action: manipulation;
-}
-
-/* BUTTONS */
-
-.button-row {
-    gap: 8px;
-}
-
-.button-row button {
-    flex: 1;
-    min-width: 120px;
-}
-
-/* ADMIN */
-
-#adminArea {
-    width: 100%;
-}
-
-.admin-heading {
-    gap: 12px;
-}
-
-.admin-heading h2 {
-    margin-bottom: 4px;
-}
-
-.admin-status {
-    font-size: 11px;
-}
-
-/* ADMIN INNER PANELS */
-
-#adminArea .panel {
-    background: #0f172a;
-    border-color: #26365c;
-}
-
-/* TEAM CARDS */
-
-.league-card {
-    padding: 12px;
-    border-radius: 11px;
-}
-
-.league-card h3 {
-    font-size: 14px;
-    margin-bottom: 3px;
-}
-
-.league-card small {
-    font-size: 11px;
-}
-
-.league-card button {
-    min-width: 75px;
-    padding: 9px 11px;
-}
-
-/* PASSWORD MODAL */
-
-.modal {
-    padding: 15px;
-}
-
-.modal-box {
-    max-width: 100%;
-    padding: 20px;
-    border-radius: 14px;
-}
-
-.modal-box h2 {
-    font-size: 19px;
-}
-
-.modal-box p {
-    line-height: 1.5;
-}
-
-/* EMPTY */
-
-.empty {
-    padding: 25px 12px;
-    font-size: 13px;
-}
-
-/* =========================================================
-   EXTRA SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
+@media (max-width: 360px) {
 
     header h1 {
         font-size: 19px;
-    }
-
-    header p {
-        font-size: 11px;
     }
 
     .container {
@@ -685,177 +559,277 @@ button {
         padding: 11px;
     }
 
-    .stats {
-        gap: 6px;
-    }
-
     .stat {
-        min-height: 70px;
+        min-height: 75px;
     }
 
     .stat strong {
-        font-size: 17px;
-    }
-
-    .stat span {
-        font-size: 10px;
-    }
-
-    .button-row button {
-        min-width: 100%;
+        font-size: 18px;
     }
 
     .score {
-        font-size: 13px;
+        font-size: 11px;
+    }
+
+    .score .score-number {
+        font-size: 17px;
     }
 }
 
 /* =========================================================
-   TABLET / DESKTOP
+   TABLET / COMPUTER
 ========================================================= */
 
-@media (min-width: 701px) {
+@media (min-width: 700px) {
 
     .container {
-        max-width: 1200px;
+        max-width: 1100px;
         padding: 20px;
+    }
+
+    header h1 {
+        font-size: 28px;
     }
 
     .admin-btn {
         width: auto;
     }
 
-    .form-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .admin-bar {
+        display: flex;
+        justify-content: flex-end;
     }
 
     .stats {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+
+    .form-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .admin-heading {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>⚽ DLS 26 League Manager</h1>
-    <p>Dream League Soccer 2026 Results & League Tables</p>
+
+    <h1>⚽ DLS 26</h1>
+
+    <p>League Manager</p>
+
     <p>TRIXARQ</p>
+
 </header>
+
 
 <div class="container">
 
-    <!-- ADMIN BUTTON -->
+    <!-- ADMIN -->
+
     <div class="admin-bar">
-        <button class="admin-btn" onclick="openAdminLogin()">
-            🔐 Admin
+
+        <button
+            class="admin-btn"
+            onclick="openAdminLogin()">
+
+            🔐 Administrator
+
         </button>
+
     </div>
 
-    <!-- LEAGUE TABS -->
-    <div class="tabs" id="leagueTabs"></div>
 
-    <!-- MAIN PUBLIC DASHBOARD -->
+    <!-- LEAGUES -->
+
+    <div
+        class="tabs"
+        id="leagueTabs">
+    </div>
+
+
+    <!-- PUBLIC DASHBOARD -->
+
     <section id="dashboardSection">
+
+
+        <!-- STAT CARDS -->
 
         <div class="stats">
 
             <div class="stat">
-                <strong id="teamCount">0</strong>
-                <span>Teams</span>
+
+                <strong id="teamCount">
+                    0
+                </strong>
+
+                <span>
+                    Teams
+                </span>
+
             </div>
 
-            <div class="stat">
-                <strong id="matchCount">0</strong>
-                <span>Matches</span>
-            </div>
 
             <div class="stat">
-                <strong id="leaderName">-</strong>
-                <span>League Leader</span>
+
+                <strong id="matchCount">
+                    0
+                </strong>
+
+                <span>
+                    Matches
+                </span>
+
             </div>
 
+
             <div class="stat">
-                <strong id="leaderPoints">0</strong>
-                <span>Leader Points</span>
+
+                <strong id="leaderName">
+                    -
+                </strong>
+
+                <span>
+                    Leader
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong id="leaderPoints">
+                    0
+                </strong>
+
+                <span>
+                    Points
+                </span>
+
             </div>
 
         </div>
 
+
         <!-- STANDINGS -->
+
         <div class="panel">
 
-            <h2>🏆 League Standings</h2>
+            <h2>
+                🏆 League Standings
+            </h2>
 
             <div class="table-wrapper">
 
                 <table>
 
                     <thead>
+
                         <tr>
+
                             <th>#</th>
+
                             <th>TEAM</th>
+
                             <th>P</th>
+
                             <th>W</th>
+
                             <th>D</th>
+
                             <th>L</th>
+
                             <th>GF</th>
+
                             <th>GA</th>
+
                             <th>GD</th>
+
                             <th>PTS</th>
+
                         </tr>
+
                     </thead>
 
-                    <tbody id="standingsBody"></tbody>
+                    <tbody
+                        id="standingsBody">
+                    </tbody>
 
                 </table>
 
             </div>
+
         </div>
 
+
         <!-- RESULTS -->
+
         <div class="panel">
 
-            <h2>📋 Match Results</h2>
+            <h2>
+                ⚽ Recent Results
+            </h2>
 
-            <div id="resultsList"></div>
+            <div id="resultsList">
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- =================================================
-         ADMIN AREA
-    ================================================= -->
+    <!-- =====================================================
+         ADMIN
+    ====================================================== -->
 
     <section id="adminArea">
 
         <div class="panel">
 
+
             <div class="admin-heading">
 
                 <div>
-                    <h2>🔐 Administrator Panel</h2>
+
+                    <h2>
+                        🔐 Admin Panel
+                    </h2>
+
                     <span class="admin-status">
-                        Administrator access enabled
+                        ● Administrator access enabled
                     </span>
+
                 </div>
+
 
                 <button
                     class="danger"
                     onclick="logoutAdmin()">
+
                     🔒 Lock Admin
+
                 </button>
 
             </div>
+
 
             <!-- CREATE LEAGUE -->
 
             <div class="panel">
 
-                <h2>➕ Create League</h2>
+                <h2>
+                    ➕ Create League
+                </h2>
 
                 <div class="form-grid">
 
@@ -876,7 +850,9 @@ button {
                     <button
                         class="primary"
                         onclick="createLeague()">
+
                         Create League
+
                     </button>
 
                 </div>
@@ -888,7 +864,9 @@ button {
 
             <div class="panel">
 
-                <h2>👥 Add Team</h2>
+                <h2>
+                    👥 Add Team
+                </h2>
 
                 <div class="form-grid">
 
@@ -900,7 +878,7 @@ button {
                     <input
                         id="teamManager"
                         type="text"
-                        placeholder="Manager / Player name">
+                        placeholder="Manager / Player">
 
                 </div>
 
@@ -909,7 +887,9 @@ button {
                     <button
                         class="success"
                         onclick="addTeam()">
+
                         Add Team
+
                     </button>
 
                 </div>
@@ -917,33 +897,49 @@ button {
             </div>
 
 
-            <!-- ENTER RESULT -->
+            <!-- MATCH RESULT -->
 
             <div class="panel">
 
-                <h2>⚽ Enter Match Result</h2>
+                <h2>
+                    ⚽ Enter Result
+                </h2>
 
                 <div class="form-grid">
 
                     <select id="homeTeam">
-                        <option value="">Home team</option>
+
+                        <option value="">
+                            Home team
+                        </option>
+
                     </select>
 
+
                     <select id="awayTeam">
-                        <option value="">Away team</option>
+
+                        <option value="">
+                            Away team
+                        </option>
+
                     </select>
+
 
                     <input
                         id="homeScore"
                         type="number"
                         min="0"
+                        inputmode="numeric"
                         placeholder="Home score">
+
 
                     <input
                         id="awayScore"
                         type="number"
                         min="0"
+                        inputmode="numeric"
                         placeholder="Away score">
+
 
                     <input
                         id="matchDate"
@@ -951,12 +947,15 @@ button {
 
                 </div>
 
+
                 <div class="button-row">
 
                     <button
                         class="primary"
                         onclick="addResult()">
-                        Save Result
+
+                        ⚽ Save Result
+
                     </button>
 
                 </div>
@@ -964,39 +963,57 @@ button {
             </div>
 
 
-            <!-- CURRENT TEAMS -->
+            <!-- TEAMS -->
 
             <div class="panel">
 
-                <h2>⚙️ Current League Teams</h2>
+                <h2>
+                    👥 Current Teams
+                </h2>
 
-                <div id="teamList"></div>
+                <div id="teamList">
+                </div>
 
             </div>
 
 
-            <!-- DATA MANAGEMENT -->
+            <!-- DATA -->
 
             <div class="panel">
 
-                <h2>🗑️ Data Management</h2>
+                <h2>
+                    ⚙️ Data Management
+                </h2>
 
-                <p style="color:#8995b5;font-size:13px;">
-                    These actions affect all saved league data.
+                <p style="
+                    color:#7887a5;
+                    font-size:10px;
+                    line-height:1.5;
+                ">
+
+                    These actions affect all
+                    saved league data.
+
                 </p>
+
 
                 <div class="button-row">
 
                     <button
                         class="danger"
                         onclick="deleteCurrentLeague()">
-                        Delete Current League
+
+                        Delete League
+
                     </button>
+
 
                     <button
                         class="secondary"
                         onclick="clearEverything()">
+
                         Clear Everything
+
                     </button>
 
                 </div>
@@ -1010,43 +1027,62 @@ button {
 </div>
 
 
-<!-- PASSWORD MODAL -->
+<!-- =========================================================
+     PASSWORD MODAL
+========================================================= -->
 
-<div class="modal" id="adminModal">
+<div
+    class="modal"
+    id="adminModal">
 
     <div class="modal-box">
 
-        <h2>🔐 Admin Login</h2>
+        <h2>
+            🔐 Admin Login
+        </h2>
 
         <p>
-            Enter the administrator password to manage leagues,
-            teams and results.
+            Enter the administrator password
+            to manage the league.
         </p>
+
 
         <input
             id="adminPassword"
             type="password"
             placeholder="Administrator password"
-            onkeydown="if(event.key==='Enter') loginAdmin()">
+            onkeydown="
+                if(event.key === 'Enter')
+                loginAdmin()
+            ">
+
 
         <div
             class="password-error"
             id="passwordError">
-            Incorrect password. Please try again.
+
+            Incorrect password.
+
         </div>
+
 
         <div class="button-row">
 
             <button
                 class="primary"
                 onclick="loginAdmin()">
+
                 Login
+
             </button>
+
 
             <button
                 class="close-modal"
                 onclick="closeAdminLogin()">
+
                 Cancel
+
             </button>
 
         </div>
@@ -1061,13 +1097,6 @@ button {
 /* =========================================================
    ADMIN PASSWORD
 ========================================================= */
-
-/*
-    CHANGE THIS PASSWORD.
-
-    Example:
-    const ADMIN_PASSWORD = "DLS2026";
-*/
 
 const ADMIN_PASSWORD = "35786491";
 
@@ -1094,31 +1123,42 @@ let currentLeagueId = null;
 
 function openAdminLogin() {
 
-    document.getElementById("adminModal").style.display =
-        "flex";
+    document.getElementById(
+        "adminModal"
+    ).style.display = "flex";
 
-    document.getElementById("adminPassword").value = "";
+    document.getElementById(
+        "adminPassword"
+    ).value = "";
 
-    document.getElementById("passwordError").style.display =
-        "none";
+    document.getElementById(
+        "passwordError"
+    ).style.display = "none";
 
     setTimeout(() => {
-        document.getElementById("adminPassword").focus();
+
+        document.getElementById(
+            "adminPassword"
+        ).focus();
+
     }, 100);
 }
 
 
 function closeAdminLogin() {
 
-    document.getElementById("adminModal").style.display =
-        "none";
+    document.getElementById(
+        "adminModal"
+    ).style.display = "none";
 }
 
 
 function loginAdmin() {
 
     const password =
-        document.getElementById("adminPassword").value;
+        document.getElementById(
+            "adminPassword"
+        ).value;
 
     if (password === ADMIN_PASSWORD) {
 
@@ -1126,8 +1166,9 @@ function loginAdmin() {
 
         closeAdminLogin();
 
-        document.getElementById("adminArea").style.display =
-            "block";
+        document.getElementById(
+            "adminArea"
+        ).style.display = "block";
 
         render();
 
@@ -1138,12 +1179,17 @@ function loginAdmin() {
 
     } else {
 
-        document.getElementById("passwordError").style.display =
-            "block";
+        document.getElementById(
+            "passwordError"
+        ).style.display = "block";
 
-        document.getElementById("adminPassword").value = "";
+        document.getElementById(
+            "adminPassword"
+        ).value = "";
 
-        document.getElementById("adminPassword").focus();
+        document.getElementById(
+            "adminPassword"
+        ).focus();
     }
 }
 
@@ -1156,8 +1202,9 @@ function logoutAdmin() {
 
     adminLoggedIn = false;
 
-    document.getElementById("adminArea").style.display =
-        "none";
+    document.getElementById(
+        "adminArea"
+    ).style.display = "none";
 
     window.scrollTo({
         top: 0,
@@ -1167,7 +1214,7 @@ function logoutAdmin() {
 
 
 /* =========================================================
-   SAVE
+   SAVE DATABASE
 ========================================================= */
 
 function saveDatabase() {
@@ -1180,7 +1227,7 @@ function saveDatabase() {
 
 
 /* =========================================================
-   GET CURRENT LEAGUE
+   CURRENT LEAGUE
 ========================================================= */
 
 function getCurrentLeague() {
@@ -1190,12 +1237,14 @@ function getCurrentLeague() {
     }
 
     if (!currentLeagueId) {
+
         currentLeagueId =
             database.leagues[0].id;
     }
 
     return database.leagues.find(
-        league => league.id === currentLeagueId
+        league =>
+            league.id === currentLeagueId
     );
 }
 
@@ -1207,20 +1256,28 @@ function getCurrentLeague() {
 function createLeague() {
 
     if (!adminLoggedIn) {
-        alert("Administrator access required.");
+        alert(
+            "Administrator access required."
+        );
         return;
     }
 
     const name =
-        document.getElementById("leagueName")
-        .value.trim();
+        document.getElementById(
+            "leagueName"
+        ).value.trim();
 
     const season =
-        document.getElementById("leagueSeason")
-        .value.trim();
+        document.getElementById(
+            "leagueSeason"
+        ).value.trim();
 
     if (!name) {
-        alert("Please enter a league name.");
+
+        alert(
+            "Please enter a league name."
+        );
+
         return;
     }
 
@@ -1230,7 +1287,8 @@ function createLeague() {
 
         name: name,
 
-        season: season || "Season 1",
+        season:
+            season || "Season 1",
 
         teams: [],
 
@@ -1244,9 +1302,13 @@ function createLeague() {
 
     saveDatabase();
 
-    document.getElementById("leagueName").value = "";
+    document.getElementById(
+        "leagueName"
+    ).value = "";
 
-    document.getElementById("leagueSeason").value = "";
+    document.getElementById(
+        "leagueSeason"
+    ).value = "";
 
     render();
 }
@@ -1259,27 +1321,42 @@ function createLeague() {
 function addTeam() {
 
     if (!adminLoggedIn) {
-        alert("Administrator access required.");
+
+        alert(
+            "Administrator access required."
+        );
+
         return;
     }
 
-    const league = getCurrentLeague();
+    const league =
+        getCurrentLeague();
 
     if (!league) {
-        alert("Create a league first.");
+
+        alert(
+            "Create a league first."
+        );
+
         return;
     }
 
     const name =
-        document.getElementById("teamName")
-        .value.trim();
+        document.getElementById(
+            "teamName"
+        ).value.trim();
 
     const manager =
-        document.getElementById("teamManager")
-        .value.trim();
+        document.getElementById(
+            "teamManager"
+        ).value.trim();
 
     if (!name) {
-        alert("Enter a team name.");
+
+        alert(
+            "Enter a team name."
+        );
+
         return;
     }
 
@@ -1290,7 +1367,11 @@ function addTeam() {
                 name.toLowerCase()
         )
     ) {
-        alert("This team already exists.");
+
+        alert(
+            "This team already exists."
+        );
+
         return;
     }
 
@@ -1300,15 +1381,20 @@ function addTeam() {
 
         name: name,
 
-        manager: manager || "Unknown"
+        manager:
+            manager || "Unknown"
 
     });
 
     saveDatabase();
 
-    document.getElementById("teamName").value = "";
+    document.getElementById(
+        "teamName"
+    ).value = "";
 
-    document.getElementById("teamManager").value = "";
+    document.getElementById(
+        "teamManager"
+    ).value = "";
 
     render();
 }
@@ -1321,55 +1407,91 @@ function addTeam() {
 function addResult() {
 
     if (!adminLoggedIn) {
-        alert("Administrator access required.");
+
+        alert(
+            "Administrator access required."
+        );
+
         return;
     }
 
-    const league = getCurrentLeague();
+    const league =
+        getCurrentLeague();
 
     if (!league) {
-        alert("Create a league first.");
+
+        alert(
+            "Create a league first."
+        );
+
         return;
     }
 
     const homeId =
         Number(
-            document.getElementById("homeTeam").value
+            document.getElementById(
+                "homeTeam"
+            ).value
         );
 
     const awayId =
         Number(
-            document.getElementById("awayTeam").value
+            document.getElementById(
+                "awayTeam"
+            ).value
         );
 
     const homeScore =
         Number(
-            document.getElementById("homeScore").value
+            document.getElementById(
+                "homeScore"
+            ).value
         );
 
     const awayScore =
         Number(
-            document.getElementById("awayScore").value
+            document.getElementById(
+                "awayScore"
+            ).value
         );
 
     const date =
-        document.getElementById("matchDate").value;
+        document.getElementById(
+            "matchDate"
+        ).value;
 
     if (!homeId || !awayId) {
-        alert("Select both teams.");
+
+        alert(
+            "Select both teams."
+        );
+
         return;
     }
 
     if (homeId === awayId) {
-        alert("A team cannot play against itself.");
+
+        alert(
+            "A team cannot play against itself."
+        );
+
         return;
     }
 
     if (
-        document.getElementById("homeScore").value === "" ||
-        document.getElementById("awayScore").value === ""
+        document.getElementById(
+            "homeScore"
+        ).value === "" ||
+
+        document.getElementById(
+            "awayScore"
+        ).value === ""
     ) {
-        alert("Enter both scores.");
+
+        alert(
+            "Enter both scores."
+        );
+
         return;
     }
 
@@ -1395,9 +1517,13 @@ function addResult() {
 
     saveDatabase();
 
-    document.getElementById("homeScore").value = "";
+    document.getElementById(
+        "homeScore"
+    ).value = "";
 
-    document.getElementById("awayScore").value = "";
+    document.getElementById(
+        "awayScore"
+    ).value = "";
 
     render();
 }
@@ -1450,7 +1576,8 @@ function calculateStandings(league) {
         const away =
             table[match.awayId];
 
-        if (!home || !away) return;
+        if (!home || !away)
+            return;
 
         home.played++;
 
@@ -1506,12 +1633,13 @@ function calculateStandings(league) {
     });
 
 
-    Object.values(table).forEach(team => {
+    Object.values(table)
+        .forEach(team => {
 
-        team.gd =
-            team.gf - team.ga;
+            team.gd =
+                team.gf - team.ga;
 
-    });
+        });
 
 
     return Object.values(table).sort(
@@ -1535,44 +1663,59 @@ function calculateStandings(league) {
 
 
 /* =========================================================
-   TABS
+   LEAGUE TABS
 ========================================================= */
 
 function renderTabs() {
 
     const container =
-        document.getElementById("leagueTabs");
+        document.getElementById(
+            "leagueTabs"
+        );
 
     container.innerHTML = "";
 
-    database.leagues.forEach(league => {
+    database.leagues.forEach(
+        league => {
 
-        const button =
-            document.createElement("button");
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.className =
-            "tab " +
-            (
-                league.id === currentLeagueId
-                    ? "active"
-                    : ""
+            button.className =
+                "tab " +
+                (
+                    league.id ===
+                    currentLeagueId
+                        ? "active"
+                        : ""
+                );
+
+            button.innerHTML =
+                `${escapeHTML(
+                    league.name
+                )}
+                <small>
+                    (${escapeHTML(
+                        league.season
+                    )})
+                </small>`;
+
+            button.onclick = () => {
+
+                currentLeagueId =
+                    league.id;
+
+                render();
+            };
+
+            container.appendChild(
+                button
             );
 
-        button.innerHTML =
-            `${escapeHTML(league.name)}
-             <small>(${escapeHTML(league.season)})</small>`;
-
-        button.onclick = () => {
-
-            currentLeagueId =
-                league.id;
-
-            render();
-        };
-
-        container.appendChild(button);
-
-    });
+        }
+    );
 }
 
 
@@ -1596,9 +1739,12 @@ function renderStandings(league) {
 
         body.innerHTML = `
             <tr>
-                <td colspan="10"
+                <td
+                    colspan="10"
                     class="empty">
-                    No teams have been added yet.
+
+                    No teams yet.
+
                 </td>
             </tr>
         `;
@@ -1609,14 +1755,16 @@ function renderStandings(league) {
     const standings =
         calculateStandings(league);
 
-
     standings.forEach(
         (team, index) => {
 
             const row =
-                document.createElement("tr");
+                document.createElement(
+                    "tr"
+                );
 
             if (index === 0) {
+
                 row.classList.add(
                     "champion"
                 );
@@ -1629,28 +1777,40 @@ function renderStandings(league) {
                 </td>
 
                 <td>
-                    ${escapeHTML(team.name)}
-                    <br>
+                    ${escapeHTML(
+                        team.name
+                    )}
 
-                    <small
-                        style="color:#6f7d9e;">
+                    <small>
                         ${escapeHTML(
                             team.manager
                         )}
                     </small>
                 </td>
 
-                <td>${team.played}</td>
+                <td>
+                    ${team.played}
+                </td>
 
-                <td>${team.wins}</td>
+                <td>
+                    ${team.wins}
+                </td>
 
-                <td>${team.draws}</td>
+                <td>
+                    ${team.draws}
+                </td>
 
-                <td>${team.losses}</td>
+                <td>
+                    ${team.losses}
+                </td>
 
-                <td>${team.gf}</td>
+                <td>
+                    ${team.gf}
+                </td>
 
-                <td>${team.ga}</td>
+                <td>
+                    ${team.ga}
+                </td>
 
                 <td>
                     ${
@@ -1665,9 +1825,11 @@ function renderStandings(league) {
                         ${team.points}
                     </strong>
                 </td>
+
             `;
 
             body.appendChild(row);
+
         }
     );
 }
@@ -1700,7 +1862,6 @@ function renderResults(league) {
         return;
     }
 
-
     [...league.matches]
         .reverse()
         .forEach(match => {
@@ -1721,7 +1882,6 @@ function renderResults(league) {
 
             if (!home || !away)
                 return;
-
 
             const div =
                 document.createElement(
@@ -1748,23 +1908,29 @@ function renderResults(league) {
 
                 <div class="score">
 
-                    ${escapeHTML(
-                        home.name
-                    )}
+                    <span class="team">
+                        ${escapeHTML(
+                            home.name
+                        )}
+                    </span>
 
-                    &nbsp;
+                    <span>
+                        <span class="score-number">
+                            ${match.homeScore}
+                        </span>
 
-                    ${match.homeScore}
+                        -
 
-                    -
+                        <span class="score-number">
+                            ${match.awayScore}
+                        </span>
+                    </span>
 
-                    ${match.awayScore}
-
-                    &nbsp;
-
-                    ${escapeHTML(
-                        away.name
-                    )}
+                    <span class="team">
+                        ${escapeHTML(
+                            away.name
+                        )}
+                    </span>
 
                 </div>
 
@@ -1803,49 +1969,52 @@ function renderTeams(league) {
         return;
     }
 
+    league.teams.forEach(
+        team => {
 
-    league.teams.forEach(team => {
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-        const card =
-            document.createElement(
-                "div"
-            );
+            card.className =
+                "league-card";
 
-        card.className =
-            "league-card";
+            card.innerHTML = `
 
-        card.innerHTML = `
+                <div>
 
-            <div>
+                    <h3>
+                        ${escapeHTML(
+                            team.name
+                        )}
+                    </h3>
 
-                <h3>
-                    ${escapeHTML(
-                        team.name
-                    )}
-                </h3>
+                    <small>
+                        Manager:
+                        ${escapeHTML(
+                            team.manager
+                        )}
+                    </small>
 
-                <small>
-                    Manager:
-                    ${escapeHTML(
-                        team.manager
-                    )}
-                </small>
+                </div>
 
-            </div>
+                <button
+                    class="danger"
+                    onclick="removeTeam(
+                        ${team.id}
+                    )">
 
-            <button
-                class="danger"
-                onclick="removeTeam(${team.id})">
+                    Remove
 
-                Remove
+                </button>
 
-            </button>
+            `;
 
-        `;
+            container.appendChild(card);
 
-        container.appendChild(card);
-
-    });
+        }
+    );
 }
 
 
@@ -1865,45 +2034,49 @@ function renderTeamSelectors(league) {
             "awayTeam"
         );
 
-    home.innerHTML =
-        `<option value="">
+    home.innerHTML = `
+        <option value="">
             Home team
-        </option>`;
+        </option>
+    `;
 
-    away.innerHTML =
-        `<option value="">
+    away.innerHTML = `
+        <option value="">
             Away team
-        </option>`;
-
+        </option>
+    `;
 
     if (!league)
         return;
 
+    league.teams.forEach(
+        team => {
 
-    league.teams.forEach(team => {
+            home.innerHTML += `
+                <option
+                    value="${team.id}">
+                    ${escapeHTML(
+                        team.name
+                    )}
+                </option>
+            `;
 
-        home.innerHTML += `
-            <option value="${team.id}">
-                ${escapeHTML(
-                    team.name
-                )}
-            </option>
-        `;
+            away.innerHTML += `
+                <option
+                    value="${team.id}">
+                    ${escapeHTML(
+                        team.name
+                    )}
+                </option>
+            `;
 
-        away.innerHTML += `
-            <option value="${team.id}">
-                ${escapeHTML(
-                    team.name
-                )}
-            </option>
-        `;
-
-    });
+        }
+    );
 }
 
 
 /* =========================================================
-   DASHBOARD STATS
+   STATS
 ========================================================= */
 
 function renderStats(league) {
@@ -1922,7 +2095,6 @@ function renderStats(league) {
             ? league.matches.length
             : 0;
 
-
     if (!league) {
 
         document.getElementById(
@@ -1936,10 +2108,8 @@ function renderStats(league) {
         return;
     }
 
-
     const standings =
         calculateStandings(league);
-
 
     if (!standings.length) {
 
@@ -1953,7 +2123,6 @@ function renderStats(league) {
 
         return;
     }
-
 
     document.getElementById(
         "leaderName"
@@ -1974,9 +2143,11 @@ function renderStats(league) {
 function removeTeam(teamId) {
 
     if (!adminLoggedIn) {
+
         alert(
             "Administrator access required."
         );
+
         return;
     }
 
@@ -1994,13 +2165,12 @@ function removeTeam(teamId) {
     if (!team)
         return;
 
-
     if (!confirm(
         `Remove ${team.name}? Existing matches involving this team will also be removed.`
     )) {
+
         return;
     }
-
 
     league.teams =
         league.teams.filter(
@@ -2021,15 +2191,17 @@ function removeTeam(teamId) {
 
 
 /* =========================================================
-   DELETE CURRENT LEAGUE
+   DELETE LEAGUE
 ========================================================= */
 
 function deleteCurrentLeague() {
 
     if (!adminLoggedIn) {
+
         alert(
             "Administrator access required."
         );
+
         return;
     }
 
@@ -2045,19 +2217,17 @@ function deleteCurrentLeague() {
         return;
     }
 
-
     if (!confirm(
         `Delete ${league.name}?`
     )) {
+
         return;
     }
-
 
     database.leagues =
         database.leagues.filter(
             l => l.id !== league.id
         );
-
 
     currentLeagueId =
         database.leagues.length
@@ -2077,18 +2247,20 @@ function deleteCurrentLeague() {
 function clearEverything() {
 
     if (!adminLoggedIn) {
+
         alert(
             "Administrator access required."
         );
+
         return;
     }
 
     if (!confirm(
         "This will delete ALL leagues, teams and results. Continue?"
     )) {
+
         return;
     }
-
 
     database = {
         leagues: []
@@ -2109,26 +2281,11 @@ function clearEverything() {
 function escapeHTML(value) {
 
     return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
