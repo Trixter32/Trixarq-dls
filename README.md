@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -227,7 +226,7 @@ table {
 }
 
 th {
-    background: #1a2744;
+    background: green;
     color: #91a3c8;
     font-size: 9px;
     padding: 9px 5px;
@@ -237,6 +236,7 @@ th {
 }
 
 td {
+    background: #1a2744;
     padding: 10px 5px;
     border-bottom: 1px solid #202f4d;
     text-align: center;
@@ -244,6 +244,7 @@ td {
 }
 
 td:nth-child(2) {
+background: #1a2744;
     text-align: left;
     font-weight: bold;
     min-width: 120px;
