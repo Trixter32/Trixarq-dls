@@ -379,6 +379,359 @@ tr:hover {
         align-items: flex-start;
         flex-direction: column;
     }
+/* =========================================================
+   MOBILE-FIRST PHONE DESIGN
+========================================================= */
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at top, #172554 0%, #0b1020 45%);
+}
+
+/* HEADER */
+
+header {
+    padding: 18px 14px 16px;
+    position: relative;
+}
+
+header h1 {
+    font-size: 22px;
+    line-height: 1.25;
+}
+
+header p {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* ADMIN BUTTON */
+
+.admin-bar {
+    margin-bottom: 10px;
+}
+
+.admin-btn {
+    width: 100%;
+    min-height: 46px;
+    font-size: 14px;
+    border-radius: 12px;
+}
+
+/* LEAGUE TABS */
+
+.tabs {
+    width: 100%;
+    gap: 7px;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    flex: 0 0 auto;
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+/* PANELS */
+
+.panel {
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 13px;
+}
+
+.panel h2 {
+    font-size: 17px;
+    margin-bottom: 13px;
+}
+
+/* STATS */
+
+.stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.stat {
+    min-height: 76px;
+    padding: 12px 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.stat strong {
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.stat span {
+    font-size: 11px;
+}
+
+/* TABLE */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    min-width: 650px;
+    font-size: 12px;
+}
+
+th {
+    padding: 9px 6px;
+    font-size: 10px;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    padding: 10px 6px;
+}
+
+td:nth-child(2) {
+    min-width: 125px;
+}
+
+/* MAKE TEAM NAME STAND OUT */
+
+td:nth-child(2) small {
+    font-size: 9px !important;
+}
+
+/* RESULTS */
+
+.match {
+    padding: 13px 10px;
+    margin-bottom: 8px;
+    border-radius: 11px;
+}
+
+.match-top {
+    font-size: 10px;
+    margin-bottom: 9px;
+}
+
+.score {
+    font-size: 15px;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+/* FORMS */
+
+.form-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+}
+
+input,
+select {
+    min-height: 46px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+button {
+    min-height: 44px;
+    font-size: 13px;
+    touch-action: manipulation;
+}
+
+/* BUTTONS */
+
+.button-row {
+    gap: 8px;
+}
+
+.button-row button {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* ADMIN */
+
+#adminArea {
+    width: 100%;
+}
+
+.admin-heading {
+    gap: 12px;
+}
+
+.admin-heading h2 {
+    margin-bottom: 4px;
+}
+
+.admin-status {
+    font-size: 11px;
+}
+
+/* ADMIN INNER PANELS */
+
+#adminArea .panel {
+    background: #0f172a;
+    border-color: #26365c;
+}
+
+/* TEAM CARDS */
+
+.league-card {
+    padding: 12px;
+    border-radius: 11px;
+}
+
+.league-card h3 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.league-card small {
+    font-size: 11px;
+}
+
+.league-card button {
+    min-width: 75px;
+    padding: 9px 11px;
+}
+
+/* PASSWORD MODAL */
+
+.modal {
+    padding: 15px;
+}
+
+.modal-box {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.modal-box h2 {
+    font-size: 19px;
+}
+
+.modal-box p {
+    line-height: 1.5;
+}
+
+/* EMPTY */
+
+.empty {
+    padding: 25px 12px;
+    font-size: 13px;
+}
+
+/* =========================================================
+   EXTRA SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    header h1 {
+        font-size: 19px;
+    }
+
+    header p {
+        font-size: 11px;
+    }
+
+    .container {
+        padding: 8px;
+    }
+
+    .panel {
+        padding: 11px;
+    }
+
+    .stats {
+        gap: 6px;
+    }
+
+    .stat {
+        min-height: 70px;
+    }
+
+    .stat strong {
+        font-size: 17px;
+    }
+
+    .stat span {
+        font-size: 10px;
+    }
+
+    .button-row button {
+        min-width: 100%;
+    }
+
+    .score {
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   TABLET / DESKTOP
+========================================================= */
+
+@media (min-width: 701px) {
+
+    .container {
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    .admin-btn {
+        width: auto;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 </style>
 </head>
